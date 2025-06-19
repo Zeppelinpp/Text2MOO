@@ -16,79 +16,75 @@ Extract useful information from user's data and user's needs, and generate a NSG
 </important>
 
 <NSGA2Config JSON Schema>
-{
+{{
     "type": "object",
-    "properties": {
-        "variable": {
+    "properties": {{
+        "variable": {{
             "type": "array",
-            "items": {
+            "items": {{
                 "type": "string"
-            }
-        },
-        "variable_attributes": {
+            }}
+        }},
+        "variable_attributes": {{
             "type": "array",
-            "items": {
+            "items": {{
                 "type": "string"
-            }
-        },
-        "objective": {
+            }}
+        }},
+        "objective": {{
             "type": "object",
-            "patternProperties": {
-                "^.*$": {
+            "patternProperties": {{
+                "^.*$": {{
                     "enum": [
                         "sum_min",
                         "sum_max"
                     ]
-                }
-            }
-        },
-        "constraints": {
+                }}
+            }}
+        }},
+        "constraints": {{
             "type": "object",
-            "patternProperties": {
-                "^.*$": {
+            "patternProperties": {{
+                "^.*$": {{
                     "type": "object",
-                    "properties": {
-                        "type": {
+                    "properties": {{
+                        "type": {{
                             "enum": [
                                 ">=",
                                 "<="
                             ]
-                        },
-                        "value": {
+                        }},
+                        "value": {{
                             "type": "number"
-                        }
-                    }
-                }
-            }
-        },
-        "constraint_penalty": {
+                        }}
+                    }}
+                }}
+            }}
+        }},
+        "constraint_penalty": {{
             "type": "number",
             "default": 1000000
-        },
-        "pop_size": {
+        }},
+        "pop_size": {{
             "type": "integer",
             "default": 100
-        },
-        "n_gen": {
+        }},
+        "n_gen": {{
             "type": "integer",
             "default": 50
-        },
-        "seed": {
+        }},
+        "seed": {{
             "type": "integer",
             "default": 42
-        }
-    },
+        }}
+    }},
     "required": [
         "variable",
         "variable_attributes",
         "objective"
     ]
-}
+}}
 </NSGA2Config JSON Schema>
-
-<User's Data>
-{data}
-</User's Data>
 """
 
 GEN_FORMAT_DATA_PROMPT = """
@@ -98,32 +94,19 @@ You are a expert of understanding user's data and convert it to a format that ca
 
 <Task>
 Extract information from user's data and convert it into a dictionary structured like:
-{
+{{
     "category of certain items": [
-        {
+        {{
             "name": "name of item",
             "attr_1": "value of attr_1",
             "attr_2": "value of attr_2", ...
-        },
+        }},
         ...
     ]
     ...
-}
+}}
+Return the data in JSON format.
 </Task>
-
-<JSON Schema>
-{
-    "type": "object",
-    "patternProperties": {
-        "^.*$": {
-            "type": "array",
-            "items": {
-                "type": "object"
-            }
-        }
-    }
-}
-</JSON Schema>
 
 <User's Data>
 {data}
