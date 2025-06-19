@@ -68,7 +68,7 @@ class Text2NSGA2:
             eliminate_duplicates=True,
         )
         logger.info(
-            f"Initialize NSGA2 algorithm with pop_size={nsga2_config.pop_size}, n_gen={nsga2_config.n_gen}"
+            f"Initialize NSGA2 algorithm with pop_size={nsga2_config.pop_size}, n_gen={nsga2_config.n_gen}, constraint_penalty={nsga2_config.constraint_penalty}"
         )
 
         # Run NSGA2
@@ -153,7 +153,7 @@ if __name__ == "__main__":
     with open("data/data_set.json", "r") as f:
         data_set = json.load(f)
 
-    user_prompt, user_data = data_set[0]["user_query"], str(data_set[0]["data_snippet"])
+    user_prompt, user_data = data_set[10]["user_query"], str(data_set[0]["data_snippet"])
     optimizer = Text2NSGA2(
         api_key=os.getenv("QWEN_KEY"),
         base_url=os.getenv("QWEN_BASE_URL"),
