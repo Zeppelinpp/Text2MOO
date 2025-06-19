@@ -11,8 +11,8 @@ Using LLM generate config to call MOEAs to solve real life multi-objective probl
 ## Project Structure
 
 - `prompts/` - System prompts for LLM data formatting and config generation
-- `pipeline/` - Text2NSGA2 pipeline connecting LLM with optimization algorithm
-- `moea/` - NSGA-II algorithm implementation
+- `pipeline/` - Text2MOO pipelines connecting LLM with optimization algorithm
+- `moea/` - MOEAs algorithm implementation
 
 ## Current Implementation
 
