@@ -75,4 +75,4 @@ total_carbon_footprint_kg: 170.0
 
 ...
 ```
-![NSGA2 Optimization Results](assets\img\opt_scatter.png)
+![NSGA2 Optimization Results](assets/img/opt_scatter.png)
