@@ -24,58 +24,55 @@ The system currently supports:
 
 ## Test Result
 ```terminal
-2025-06-19 15:32:57,947 - text2nsga2 - INFO - Formatting data...
-2025-06-19 15:32:57,948 - text2nsga2 - INFO - Formatting data using qwen-plus...
-2025-06-19 15:33:28,702 - text2nsga2 - INFO - Generating NSGA2Config...
-2025-06-19 15:33:28,702 - text2nsga2 - INFO - Generating NSGA2Config using qwen-plus...
-2025-06-19 15:33:45,727 - text2nsga2 - INFO - Objective:
+2025-06-19 18:32:28,556 - text2nsga2 - INFO - Formatting data...
+2025-06-19 18:32:28,556 - text2nsga2 - INFO - Formatting data using qwen-plus...
+2025-06-19 18:32:48,412 - text2nsga2 - INFO - Generating NSGA2Config...
+2025-06-19 18:32:48,413 - text2nsga2 - INFO - Generating NSGA2Config using qwen-plus...
+2025-06-19 18:33:02,499 - text2nsga2 - INFO - Objective:
 {
-    "carbon_footprint_kg": "sum_min",
-    "carbon_footprint_kg_per_km": "sum_min",
-    "speed_km_per_h": "sum_max"
+    "cost": "sum_min",
+    "delivery_time_days": "sum_min",
+    "carbon_footprint_kg": "sum_min"
 }
-2025-06-19 15:33:45,728 - text2nsga2 - INFO - Constraints:
+2025-06-19 18:33:02,500 - text2nsga2 - INFO - Constraints:
 {
-    "cost": {
-        "type": "<=",
-        "value": 10000
-    },
-    "delivery_time_days": {
-        "type": "<=",
-        "value": 7
-    },
     "distance_from_supplier_km": {
         "type": "<=",
-        "value": 200
+        "value": 500
+    },
+    "speed_km_per_h": {
+        "type": ">=",
+        "value": 40
     }
 }
-2025-06-19 15:33:45,730 - text2nsga2 - INFO - Setting up NSGA2Problem...
-2025-06-19 15:33:45,734 - text2nsga2 - INFO - Initialize NSGA2 algorithm with pop_size=100, n_gen=50, constraint_penalty=1000000.0        
-2025-06-19 15:33:45,734 - text2nsga2 - INFO - Running NSGA2...
+2025-06-19 18:33:02,501 - text2nsga2 - INFO - Setting up NSGA2Problem...
+2025-06-19 18:33:02,504 - text2nsga2 - INFO - Initialize NSGA2 algorithm with pop_size=100, n_gen=50, constraint_penalty=1000000.0        
+2025-06-19 18:33:02,505 - text2nsga2 - INFO - Running NSGA2...
 ==========================================================================================
 n_gen  |  n_eval  | n_nds  |     cv_min    |     cv_avg    |      eps      |   indicator
 ==========================================================================================
-     1 |       49 |     10 |  0.000000E+00 |  2.040816E+05 |             - |             -
+     1 |       49 |     49 |  0.000000E+00 |  0.000000E+00 |             - |             -
 WARNING: Mating could not produce the required number of (unique) offsprings!
-     2 |       60 |     12 |  0.000000E+00 |  2.000000E+05 |  0.000000E+00 |             f
-     3 |       60 |     12 |  0.000000E+00 |  2.000000E+05 |  0.000000E+00 |             f
-2025-06-19 15:33:46,461 - text2nsga2 - INFO - Generate report...
+     2 |       60 |     60 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+     3 |       60 |     60 |  0.000000E+00 |  0.000000E+00 |  0.000000E+00 |             f
+2025-06-19 18:33:03,384 - text2nsga2 - INFO - Generate report...
 Solution 1:
-suppliers: S2
+suppliers: S4
 transportation_modes: T3
-warehouse_locations: W3
-total_carbon_footprint_kg: 180.0
-total_carbon_footprint_kg_per_km: 0.35
-total_speed_km_per_h: 70.0
+warehouse_locations: W1
+total_cost: 5200.0
+total_delivery_time_days: 4.0
+total_carbon_footprint_kg: 210.0
 
 
 Solution 2:
-suppliers: S2
-transportation_modes: T3
-warehouse_locations: W1
-total_carbon_footprint_kg: 180.0
-total_carbon_footprint_kg_per_km: 0.35
-total_speed_km_per_h: 70.0
+suppliers: S5
+transportation_modes: T1
+warehouse_locations: W2
+total_cost: 4700.0
+total_delivery_time_days: 8.0
+total_carbon_footprint_kg: 170.0
 
 ...
 ```
+![NSGA2 Optimization Results](assets\img\opt_scatter.png)

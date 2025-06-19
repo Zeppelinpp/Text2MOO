@@ -11,6 +11,7 @@ from pymoo.operators.sampling.rnd import IntegerRandomSampling
 from pymoo.operators.crossover.sbx import SBX
 from pymoo.operators.mutation.pm import PM
 from pymoo.operators.repair.rounding import RoundingRepair
+from pymoo.visualization.scatter import Scatter
 from moea.nsga2 import NSGA2Config, NSGA2Problem
 import matplotlib.pyplot as plt
 from prompts.sys_prompts import GEN_NSGA2_CONFIG_PROMPT, GEN_FORMAT_DATA_PROMPT
@@ -100,7 +101,7 @@ class Text2NSGA2:
             report.append("\n")
         report = "\n".join(report)
 
-        return res.X, report
+        return res, report
 
     def _format_data(self, data: str):
         """Generate formatted data from user's data snippet."""
@@ -153,7 +154,7 @@ if __name__ == "__main__":
     with open("data/data_set.json", "r") as f:
         data_set = json.load(f)
 
-    user_prompt, user_data = data_set[10]["user_query"], str(data_set[0]["data_snippet"])
+    user_prompt, user_data = data_set[0]["user_query"], str(data_set[0]["data_snippet"])
     optimizer = Text2NSGA2(
         api_key=os.getenv("QWEN_KEY"),
         base_url=os.getenv("QWEN_BASE_URL"),
@@ -161,5 +162,5 @@ if __name__ == "__main__":
     )
     res, report = optimizer.run(user_prompt, user_data)
     print(report)
-    plt.scatter(res[:, 0], res[:, 1])
-    plt.show(block=True)
+    pymoo_scatter = Scatter()
+    pymoo_scatter.add(res.F).show()
