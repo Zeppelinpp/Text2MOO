@@ -23,6 +23,89 @@ The system currently supports:
 - Handling multiple objectives and constraints
 
 ## Test Result
+###Test Data:
+```json
+{
+    "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 5 potential suppliers, 3 transportation modes, and 4 warehouse locations. The goal is to minimize cost and delivery time while also reducing the carbon footprint as much as possible.",
+    "data_snippet": {
+        "suppliers": [
+            {
+                "supplier_id": "S1",
+                "cost": 5000,
+                "delivery_time_days": 5,
+                "carbon_footprint_kg": 200
+            },
+            {
+                "supplier_id": "S2",
+                "cost": 4500,
+                "delivery_time_days": 7,
+                "carbon_footprint_kg": 180
+            },
+            {
+                "supplier_id": "S3",
+                "cost": 4800,
+                "delivery_time_days": 6,
+                "carbon_footprint_kg": 190
+            },
+            {
+                "supplier_id": "S4",
+                "cost": 5200,
+                "delivery_time_days": 4,
+                "carbon_footprint_kg": 210
+            },
+            {
+                "supplier_id": "S5",
+                "cost": 4700,
+                "delivery_time_days": 8,
+                "carbon_footprint_kg": 170
+            }
+        ],
+        "transportation_modes": [
+            {
+                "mode_id": "T1",
+                "cost_per_km": 0.5,
+                "speed_km_per_h": 60,
+                "carbon_footprint_kg_per_km": 0.3
+            },
+            {
+                "mode_id": "T2",
+                "cost_per_km": 0.7,
+                "speed_km_per_h": 80,
+                "carbon_footprint_kg_per_km": 0.4
+            },
+            {
+                "mode_id": "T3",
+                "cost_per_km": 0.6,
+                "speed_km_per_h": 70,
+                "carbon_footprint_kg_per_km": 0.35
+            }
+        ],
+        "warehouse_locations": [
+            {
+                "warehouse_id": "W1",
+                "distance_from_supplier_km": 100,
+                "storage_cost_per_unit": 10
+            },
+            {
+                "warehouse_id": "W2",
+                "distance_from_supplier_km": 150,
+                "storage_cost_per_unit": 8
+            },
+            {
+                "warehouse_id": "W3",
+                "distance_from_supplier_km": 200,
+                "storage_cost_per_unit": 7
+            },
+            {
+                "warehouse_id": "W4",
+                "distance_from_supplier_km": 120,
+                "storage_cost_per_unit": 9
+            }
+        ]
+    }
+}
+```
+### Result
 ```terminal
 2025-06-19 18:32:28,556 - text2nsga2 - INFO - Formatting data...
 2025-06-19 18:32:28,556 - text2nsga2 - INFO - Formatting data using qwen-plus...
