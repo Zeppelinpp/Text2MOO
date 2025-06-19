@@ -1,15 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from pymoo.algorithms.moo.nsga2 import NSGA2
-from pymoo.optimize import minimize
-from pymoo.operators.sampling.rnd import IntegerRandomSampling
-from pymoo.operators.crossover.sbx import SBX
-from pymoo.operators.mutation.pm import PM
-from pymoo.operators.repair.rounding import RoundingRepair
 from pymoo.core.problem import Problem
-from pymoo.visualization.scatter import Scatter
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional, Literal
+
+import logging
+logger = logging.getLogger("text2nsga2")
 
 
 class NSGA2Config(BaseModel):
@@ -68,10 +63,10 @@ class NSGA2Problem(Problem):
             for idx, objective in enumerate(self.objective_mapping.items()):
                 obj_attr, obj_type = objective
                 if obj_type == "sum_min":
-                    value = sum([item[obj_attr] for item in combination])
+                    value = sum([item[obj_attr] for item in combination if obj_attr in item])
                     f[idx].append(value)
                 elif obj_type == "sum_max":
-                    value = -sum([item[obj_attr] for item in combination])
+                    value = -sum([item[obj_attr] for item in combination if obj_attr in item])
                     f[idx].append(value)
 
             # g: constraint function
@@ -81,7 +76,7 @@ class NSGA2Problem(Problem):
                     if constraint_config["type"] == ">=":
                         if any(
                             item[constraint_attr] < constraint_config["value"]
-                            for item in combination
+                            for item in combination if constraint_attr in item
                         ):
                             g[idx].append(self.constraint_penalty)
                         else:
@@ -89,7 +84,7 @@ class NSGA2Problem(Problem):
                     if constraint_config["type"] == "<=":
                         if any(
                             item[constraint_attr] > constraint_config["value"]
-                            for item in combination
+                            for item in combination if constraint_attr in item
                         ):
                             g[idx].append(self.constraint_penalty)
                         else:
@@ -99,5 +94,3 @@ class NSGA2Problem(Problem):
             out["G"] = np.column_stack(g)
         else:
             out["F"] = np.column_stack(f)
-
-
