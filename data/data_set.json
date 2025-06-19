@@ -1,0 +1,1279 @@
+[
+    {
+        "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 5 potential suppliers, 3 transportation modes, and 4 warehouse locations. The goal is to minimize cost and delivery time while also reducing the carbon footprint as much as possible.",
+        "data_snippet": {
+            "suppliers": [
+                {
+                    "supplier_id": "S1",
+                    "cost": 5000,
+                    "delivery_time_days": 5,
+                    "carbon_footprint_kg": 200
+                },
+                {
+                    "supplier_id": "S2",
+                    "cost": 4500,
+                    "delivery_time_days": 7,
+                    "carbon_footprint_kg": 180
+                },
+                {
+                    "supplier_id": "S3",
+                    "cost": 4800,
+                    "delivery_time_days": 6,
+                    "carbon_footprint_kg": 190
+                },
+                {
+                    "supplier_id": "S4",
+                    "cost": 5200,
+                    "delivery_time_days": 4,
+                    "carbon_footprint_kg": 210
+                },
+                {
+                    "supplier_id": "S5",
+                    "cost": 4700,
+                    "delivery_time_days": 8,
+                    "carbon_footprint_kg": 170
+                }
+            ],
+            "transportation_modes": [
+                {
+                    "mode_id": "T1",
+                    "cost_per_km": 0.5,
+                    "speed_km_per_h": 60,
+                    "carbon_footprint_kg_per_km": 0.3
+                },
+                {
+                    "mode_id": "T2",
+                    "cost_per_km": 0.7,
+                    "speed_km_per_h": 80,
+                    "carbon_footprint_kg_per_km": 0.4
+                },
+                {
+                    "mode_id": "T3",
+                    "cost_per_km": 0.6,
+                    "speed_km_per_h": 70,
+                    "carbon_footprint_kg_per_km": 0.35
+                }
+            ],
+            "warehouse_locations": [
+                {
+                    "warehouse_id": "W1",
+                    "distance_from_supplier_km": 100,
+                    "storage_cost_per_unit": 10
+                },
+                {
+                    "warehouse_id": "W2",
+                    "distance_from_supplier_km": 150,
+                    "storage_cost_per_unit": 8
+                },
+                {
+                    "warehouse_id": "W3",
+                    "distance_from_supplier_km": 200,
+                    "storage_cost_per_unit": 7
+                },
+                {
+                    "warehouse_id": "W4",
+                    "distance_from_supplier_km": 120,
+                    "storage_cost_per_unit": 9
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 5 potential suppliers, 3 different transportation modes, and 4 warehouses to choose from. The goal is to minimize cost and delivery time while also reducing the carbon footprint as much as possible.",
+        "data_snippet": {
+            "suppliers": [
+                {
+                    "supplier_id": "S1",
+                    "cost": 50000,
+                    "delivery_time_days": 5,
+                    "carbon_footprint_kg": 200
+                },
+                {
+                    "supplier_id": "S2",
+                    "cost": 45000,
+                    "delivery_time_days": 7,
+                    "carbon_footprint_kg": 150
+                },
+                {
+                    "supplier_id": "S3",
+                    "cost": 55000,
+                    "delivery_time_days": 4,
+                    "carbon_footprint_kg": 250
+                },
+                {
+                    "supplier_id": "S4",
+                    "cost": 40000,
+                    "delivery_time_days": 10,
+                    "carbon_footprint_kg": 100
+                },
+                {
+                    "supplier_id": "S5",
+                    "cost": 60000,
+                    "delivery_time_days": 3,
+                    "carbon_footprint_kg": 300
+                }
+            ],
+            "transportation_modes": [
+                {
+                    "mode_id": "T1",
+                    "cost_per_km": 0.5,
+                    "speed_km_per_h": 60,
+                    "carbon_footprint_kg_per_km": 0.2
+                },
+                {
+                    "mode_id": "T2",
+                    "cost_per_km": 0.3,
+                    "speed_km_per_h": 40,
+                    "carbon_footprint_kg_per_km": 0.1
+                },
+                {
+                    "mode_id": "T3",
+                    "cost_per_km": 0.7,
+                    "speed_km_per_h": 80,
+                    "carbon_footprint_kg_per_km": 0.3
+                }
+            ],
+            "warehouses": [
+                {
+                    "warehouse_id": "W1",
+                    "storage_cost_per_unit": 10,
+                    "distance_from_supplier_km": 100,
+                    "capacity_units": 5000
+                },
+                {
+                    "warehouse_id": "W2",
+                    "storage_cost_per_unit": 8,
+                    "distance_from_supplier_km": 150,
+                    "capacity_units": 4000
+                },
+                {
+                    "warehouse_id": "W3",
+                    "storage_cost_per_unit": 12,
+                    "distance_from_supplier_km": 80,
+                    "capacity_units": 6000
+                },
+                {
+                    "warehouse_id": "W4",
+                    "storage_cost_per_unit": 9,
+                    "distance_from_supplier_km": 200,
+                    "capacity_units": 3000
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize my supply chain for delivering products to 50 different locations. I have 10 potential warehouses to choose from, each with different storage costs and capacities. There are 5 different transportation modes available, each with varying costs and delivery times. The goal is to minimize total cost while ensuring delivery within 3 days for 90% of the orders. The data includes warehouse locations, capacities, costs, transportation modes, costs, and delivery times.",
+        "data_snippet": {
+            "warehouses": [
+                {
+                    "id": "WH1",
+                    "location": "CityA",
+                    "capacity": 10000,
+                    "cost_per_unit": 5
+                },
+                {
+                    "id": "WH2",
+                    "location": "CityB",
+                    "capacity": 15000,
+                    "cost_per_unit": 4
+                }
+            ],
+            "transportation_modes": [
+                {
+                    "mode": "Truck",
+                    "cost_per_km": 0.1,
+                    "average_speed_kmh": 60,
+                    "max_capacity": 2000
+                },
+                {
+                    "mode": "Train",
+                    "cost_per_km": 0.05,
+                    "average_speed_kmh": 80,
+                    "max_capacity": 10000
+                }
+            ],
+            "delivery_locations": [
+                {
+                    "id": "DL1",
+                    "location": "CityC",
+                    "demand": 500
+                },
+                {
+                    "id": "DL2",
+                    "location": "CityD",
+                    "demand": 750
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 30 potential suppliers, 20 different transportation modes, and 15 warehouses to choose from. The budget is $500,000, and I aim to minimize delivery time and carbon footprint while staying within budget.",
+        "data_snippet": {
+            "suppliers": {
+                "supplier_1": {
+                    "cost": "value1",
+                    "delivery_time": "value2",
+                    "carbon_footprint": "value3"
+                },
+                "supplier_2": {
+                    "cost": "value1",
+                    "delivery_time": "value2",
+                    "carbon_footprint": "value3"
+                },
+                "...": "..."
+            },
+            "transportation_modes": {
+                "mode_1": {
+                    "cost": "value1",
+                    "delivery_time": "value2",
+                    "carbon_footprint": "value3"
+                },
+                "mode_2": {
+                    "cost": "value1",
+                    "delivery_time": "value2",
+                    "carbon_footprint": "value3"
+                },
+                "...": "..."
+            },
+            "warehouses": {
+                "warehouse_1": {
+                    "cost": "value1",
+                    "location": "value2",
+                    "capacity": "value3"
+                },
+                "warehouse_2": {
+                    "cost": "value1",
+                    "location": "value2",
+                    "capacity": "value3"
+                },
+                "...": "..."
+            }
+        }
+    },
+    {
+        "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 5 potential suppliers, 3 different transportation modes, and 4 warehouse locations. The budget is $500,000, and the maximum allowed carbon footprint is 1000 kg CO2 per month. The data includes supplier costs, delivery times, and carbon emissions for each transportation mode.",
+        "data_snippet": {
+            "suppliers": [
+                {
+                    "supplier_id": "S1",
+                    "cost": 100000,
+                    "delivery_time_days": 5,
+                    "reliability_percentage": 95
+                },
+                {
+                    "supplier_id": "S2",
+                    "cost": 120000,
+                    "delivery_time_days": 4,
+                    "reliability_percentage": 97
+                },
+                {
+                    "supplier_id": "S3",
+                    "cost": 90000,
+                    "delivery_time_days": 6,
+                    "reliability_percentage": 90
+                },
+                {
+                    "supplier_id": "S4",
+                    "cost": 110000,
+                    "delivery_time_days": 5,
+                    "reliability_percentage": 94
+                },
+                {
+                    "supplier_id": "S5",
+                    "cost": 130000,
+                    "delivery_time_days": 3,
+                    "reliability_percentage": 98
+                }
+            ],
+            "transportation_modes": [
+                {
+                    "mode_id": "T1",
+                    "cost_per_km": 0.5,
+                    "speed_km_per_h": 60,
+                    "carbon_emission_kg_per_km": 0.2
+                },
+                {
+                    "mode_id": "T2",
+                    "cost_per_km": 0.3,
+                    "speed_km_per_h": 40,
+                    "carbon_emission_kg_per_km": 0.15
+                },
+                {
+                    "mode_id": "T3",
+                    "cost_per_km": 0.7,
+                    "speed_km_per_h": 80,
+                    "carbon_emission_kg_per_km": 0.25
+                }
+            ],
+            "warehouses": [
+                {
+                    "warehouse_id": "W1",
+                    "location": "Location1",
+                    "storage_cost_per_month": 5000,
+                    "capacity_units": 10000
+                },
+                {
+                    "warehouse_id": "W2",
+                    "location": "Location2",
+                    "storage_cost_per_month": 6000,
+                    "capacity_units": 15000
+                },
+                {
+                    "warehouse_id": "W3",
+                    "location": "Location3",
+                    "storage_cost_per_month": 4500,
+                    "capacity_units": 8000
+                },
+                {
+                    "warehouse_id": "W4",
+                    "location": "Location4",
+                    "storage_cost_per_month": 5500,
+                    "capacity_units": 12000
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to allocate a limited budget of $500,000 across three departments (Marketing, R&D, Operations) to maximize overall company performance. Each department has different options for investment with varying returns and costs. The data includes potential projects for each department with their expected ROI and cost.",
+        "data_snippet": {
+            "Marketing": [
+                {
+                    "project_name": "Social Media Campaign",
+                    "cost": 50000,
+                    "expected_ROI": 1.2
+                },
+                {
+                    "project_name": "TV Commercial",
+                    "cost": 150000,
+                    "expected_ROI": 1.5
+                },
+                {
+                    "project_name": "Influencer Partnership",
+                    "cost": 75000,
+                    "expected_ROI": 1.3
+                }
+            ],
+            "R&D": [
+                {
+                    "project_name": "New Product Development",
+                    "cost": 200000,
+                    "expected_ROI": 2.0
+                },
+                {
+                    "project_name": "Technology Upgrade",
+                    "cost": 100000,
+                    "expected_ROI": 1.8
+                },
+                {
+                    "project_name": "Market Research",
+                    "cost": 50000,
+                    "expected_ROI": 1.1
+                }
+            ],
+            "Operations": [
+                {
+                    "project_name": "Warehouse Expansion",
+                    "cost": 150000,
+                    "expected_ROI": 1.4
+                },
+                {
+                    "project_name": "Process Automation",
+                    "cost": 100000,
+                    "expected_ROI": 1.6
+                },
+                {
+                    "project_name": "Supply Chain Optimization",
+                    "cost": 50000,
+                    "expected_ROI": 1.2
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to allocate a limited budget of $500,000 across three projects to maximize overall benefit while minimizing cost. The projects have different costs, benefits, and completion times. Here's the data I have:",
+        "data_snippet": "| Project | Cost ($) | Benefit (units) | Completion Time (months) |\n|---------|----------|------------------|--------------------------|\n| A       | 200,000  | 150              | 12                       |\n| B       | 300,000  | 250              | 18                       |\n| C       | 100,000  | 80               | 6                        |"
+    },
+    {
+        "user_query": "I need to allocate a limited budget of $500,000 across three departments: Marketing, R&D, and Operations, to maximize overall company growth while minimizing costs. Each department has different options for investment with varying costs and expected growth impacts. The data includes potential investments, their costs, and projected growth percentages.",
+        "data_snippet": {
+            "Marketing": [
+                {
+                    "option": "Social Media Campaign",
+                    "cost": 50000,
+                    "growth_impact": 0.15
+                },
+                {
+                    "option": "TV Commercial",
+                    "cost": 100000,
+                    "growth_impact": 0.25
+                },
+                {
+                    "option": "Print Ads",
+                    "cost": 30000,
+                    "growth_impact": 0.1
+                }
+            ],
+            "R&D": [
+                {
+                    "option": "New Product Development",
+                    "cost": 200000,
+                    "growth_impact": 0.4
+                },
+                {
+                    "option": "Technology Upgrade",
+                    "cost": 150000,
+                    "growth_impact": 0.3
+                },
+                {
+                    "option": "Market Research",
+                    "cost": 50000,
+                    "growth_impact": 0.2
+                }
+            ],
+            "Operations": [
+                {
+                    "option": "Equipment Purchase",
+                    "cost": 100000,
+                    "growth_impact": 0.2
+                },
+                {
+                    "option": "Staff Training",
+                    "cost": 60000,
+                    "growth_impact": 0.15
+                },
+                {
+                    "option": "Process Optimization",
+                    "cost": 40000,
+                    "growth_impact": 0.1
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to allocate a limited budget of $500,000 across three projects to maximize overall benefit while minimizing environmental impact. The projects have different costs, benefits, and environmental impacts. Here's the data I have:",
+        "data_snippet": "| Project | Cost ($) | Benefit (units) | Environmental Impact (units) |\n|---------|----------|-----------------|------------------------------|\n| A       | 200,000  | 150             | 50                           |\n| B       | 300,000  | 200             | 70                           |\n| C       | 250,000  | 180             | 60                           |"
+    },
+    {
+        "user_query": "I need to allocate a limited budget of $500,000 across three departments: Marketing, R&D, and Operations, to maximize overall company performance. Each department has different options for investment with varying returns and costs. The data includes potential investments, their costs, and expected returns for each department.",
+        "data_snippet": {
+            "Marketing": [
+                {
+                    "option": "Online Ads",
+                    "cost": 50000,
+                    "expected_return": 120000
+                },
+                {
+                    "option": "TV Commercials",
+                    "cost": 100000,
+                    "expected_return": 200000
+                },
+                {
+                    "option": "Social Media Campaign",
+                    "cost": 30000,
+                    "expected_return": 80000
+                }
+            ],
+            "R&D": [
+                {
+                    "option": "New Product Development",
+                    "cost": 200000,
+                    "expected_return": 500000
+                },
+                {
+                    "option": "Technology Upgrade",
+                    "cost": 150000,
+                    "expected_return": 300000
+                },
+                {
+                    "option": "Market Research",
+                    "cost": 50000,
+                    "expected_return": 100000
+                }
+            ],
+            "Operations": [
+                {
+                    "option": "Equipment Purchase",
+                    "cost": 100000,
+                    "expected_return": 150000
+                },
+                {
+                    "option": "Process Optimization",
+                    "cost": 50000,
+                    "expected_return": 75000
+                },
+                {
+                    "option": "Staff Training",
+                    "cost": 30000,
+                    "expected_return": 60000
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to find the most efficient delivery routes for a fleet of 10 trucks delivering goods to 50 different locations. The objectives are to minimize fuel consumption, maximize delivery speed, and ensure driver safety. The constraints include truck capacity, delivery time windows, and traffic conditions. The data includes truck specifications, location distances, and traffic patterns.",
+        "data_snippet": {
+            "truck_specifications": [
+                {
+                    "truck_id": "T1",
+                    "capacity": "5000 kg",
+                    "fuel_efficiency": "5 km/l",
+                    "max_speed": "90 km/h"
+                },
+                {
+                    "truck_id": "T2",
+                    "capacity": "6000 kg",
+                    "fuel_efficiency": "4.5 km/l",
+                    "max_speed": "85 km/h"
+                }
+            ],
+            "location_distances": [
+                {
+                    "from": "Warehouse",
+                    "to": "Location1",
+                    "distance": "10 km",
+                    "average_traffic": "Low"
+                },
+                {
+                    "from": "Warehouse",
+                    "to": "Location2",
+                    "distance": "15 km",
+                    "average_traffic": "Medium"
+                }
+            ],
+            "delivery_time_windows": [
+                {
+                    "location": "Location1",
+                    "start_time": "08:00",
+                    "end_time": "10:00"
+                },
+                {
+                    "location": "Location2",
+                    "start_time": "09:00",
+                    "end_time": "12:00"
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to find the most efficient delivery routes for a fleet of 10 trucks delivering goods to 50 different locations. The objectives are to minimize fuel consumption, delivery time, and ensure each truck's load does not exceed its capacity. The data includes distances between locations, average speed limits, truck capacities, and current traffic conditions.",
+        "data_snippet": {
+            "locations": [
+                {
+                    "id": "loc_1",
+                    "name": "Warehouse",
+                    "coordinates": {
+                        "lat": 40.7128,
+                        "lng": -74.006
+                    }
+                },
+                {
+                    "id": "loc_2",
+                    "name": "Downtown",
+                    "coordinates": {
+                        "lat": 40.7145,
+                        "lng": -74.0082
+                    }
+                },
+                "..."
+            ],
+            "distance_matrix": [
+                [
+                    0,
+                    1.5,
+                    "...",
+                    2.3
+                ],
+                [
+                    1.5,
+                    0,
+                    "...",
+                    1.8
+                ],
+                [
+                    "...",
+                    "...",
+                    "...",
+                    "..."
+                ],
+                [
+                    2.3,
+                    1.8,
+                    "...",
+                    0
+                ]
+            ],
+            "speed_limits": {
+                "highway": 65,
+                "urban": 30,
+                "rural": 55
+            },
+            "truck_capacities": {
+                "truck_1": 5000,
+                "truck_2": 4500,
+                "...": "...",
+                "truck_10": 6000
+            },
+            "traffic_conditions": {
+                "current": {
+                    "highway": "moderate",
+                    "urban": "heavy",
+                    "rural": "light"
+                },
+                "average_speeds": {
+                    "highway": 50,
+                    "urban": 20,
+                    "rural": 45
+                }
+            }
+        }
+    },
+    {
+        "user_query": "I need to find the most efficient delivery routes for a fleet of 10 trucks delivering goods to 50 different locations. The objectives are to minimize fuel consumption and delivery time, while ensuring each truck's load does not exceed its capacity. The data includes distances between locations, average speed limits, truck load capacities, and fuel efficiency rates.",
+        "data_snippet": {
+            "locations": [
+                {
+                    "id": "loc_1",
+                    "name": "Location 1",
+                    "coordinates": "x1, y1"
+                },
+                {
+                    "id": "loc_2",
+                    "name": "Location 2",
+                    "coordinates": "x2, y2"
+                },
+                "... up to loc_50"
+            ],
+            "distance_matrix": [
+                [
+                    0,
+                    10,
+                    15,
+                    "...",
+                    20
+                ],
+                [
+                    10,
+                    0,
+                    35,
+                    "...",
+                    25
+                ],
+                [
+                    15,
+                    35,
+                    0,
+                    "...",
+                    30
+                ],
+                [
+                    "...",
+                    "...",
+                    "...",
+                    "...",
+                    "..."
+                ],
+                [
+                    20,
+                    25,
+                    30,
+                    "...",
+                    0
+                ]
+            ],
+            "trucks": [
+                {
+                    "id": "truck_1",
+                    "capacity": 5000,
+                    "fuel_efficiency": 5.5
+                },
+                "... up to truck_10"
+            ],
+            "speed_limits": {
+                "urban": 50,
+                "highway": 90,
+                "rural": 70
+            }
+        }
+    },
+    {
+        "user_query": "I need to find the most efficient delivery routes for a fleet of 10 trucks delivering goods to 50 different locations. The objectives are to minimize fuel consumption and delivery time, while ensuring each truck does not exceed its maximum load capacity of 2000 kg. The data includes distances between locations, average speed limits on routes, and the weight of goods to be delivered at each location.",
+        "data_snippet": "| Location_ID | Location_Name | Goods_Weight_kg | ...\n| ----------- | ------------- | --------------- | ---\n| L1          | Downtown      | 150             | ...\n| L2          | Suburbia      | 200             | ...\n| ...         | ...           | ...             | ...\n\n| Route_ID | Start_Location | End_Location | Distance_km | Avg_Speed_km_h | ...\n| -------- | -------------- | ------------ | ----------- | -------------- | ---\n| R1       | L1             | L2           | 10          | 60             | ...\n| R2       | L1             | L3           | 15          | 50             | ...\n| ...      | ...            | ...          | ...         | ...            | ..."
+    },
+    {
+        "user_query": "I need to find the most efficient delivery routes for a fleet of 10 trucks delivering goods to 50 different locations. The objectives are to minimize fuel consumption, delivery time, and ensure driver satisfaction by avoiding high-traffic areas. I have data on distance between locations, average traffic conditions at different times, and truck specifications.",
+        "data_snippet": {
+            "locations": [
+                {
+                    "location_id": "loc_1",
+                    "coordinates": "x1, y1",
+                    "average_traffic": "low"
+                },
+                {
+                    "location_id": "loc_2",
+                    "coordinates": "x2, y2",
+                    "average_traffic": "medium"
+                }
+            ],
+            "trucks": [
+                {
+                    "truck_id": "truck_1",
+                    "fuel_efficiency": "10 mpg",
+                    "max_speed": "60 mph"
+                },
+                {
+                    "truck_id": "truck_2",
+                    "fuel_efficiency": "8 mpg",
+                    "max_speed": "55 mph"
+                }
+            ],
+            "distance_matrix": [
+                [
+                    0,
+                    10,
+                    20
+                ],
+                [
+                    10,
+                    0,
+                    15
+                ],
+                [
+                    20,
+                    15,
+                    0
+                ]
+            ]
+        }
+    },
+    {
+        "user_query": "I need to design a smartphone that balances cost, battery life, and camera quality. My budget is $500 per unit, and I want the battery to last at least 24 hours on moderate use. I have 30 different processor options, 20 screen types, 15 battery models, and 25 camera modules to choose from.",
+        "data_snippet": {
+            "processors": {
+                "processor_1": {
+                    "cost": 100,
+                    "performance": "high",
+                    "power_consumption": "medium"
+                },
+                "processor_2": {
+                    "cost": 80,
+                    "performance": "medium",
+                    "power_consumption": "low"
+                },
+                "...": "..."
+            },
+            "screens": {
+                "screen_1": {
+                    "cost": 50,
+                    "type": "AMOLED",
+                    "size": "6.1 inch",
+                    "power_consumption": "high"
+                },
+                "screen_2": {
+                    "cost": 40,
+                    "type": "LCD",
+                    "size": "5.8 inch",
+                    "power_consumption": "medium"
+                },
+                "...": "..."
+            },
+            "batteries": {
+                "battery_1": {
+                    "cost": 30,
+                    "capacity": "4000mAh",
+                    "life_span": "2 years"
+                },
+                "battery_2": {
+                    "cost": 25,
+                    "capacity": "3500mAh",
+                    "life_span": "1.5 years"
+                },
+                "...": "..."
+            },
+            "cameras": {
+                "camera_1": {
+                    "cost": 60,
+                    "resolution": "48MP",
+                    "features": [
+                        "optical zoom",
+                        "night mode"
+                    ]
+                },
+                "camera_2": {
+                    "cost": 45,
+                    "resolution": "32MP",
+                    "features": [
+                        "digital zoom",
+                        "portrait mode"
+                    ]
+                },
+                "...": "..."
+            }
+        }
+    },
+    {
+        "user_query": "I need to design a smartphone that balances cost, battery life, and camera quality. The budget is $500 per unit, and I want to maximize battery life and camera quality within this budget. I have 30 different battery options, 20 camera modules, and 10 processor choices. The data includes cost, battery capacity (mAh), camera resolution (MP), and processor speed (GHz).",
+        "data_snippet": {
+            "battery_options": [
+                {
+                    "id": "battery_1",
+                    "cost": 50,
+                    "capacity": 3000
+                },
+                {
+                    "id": "battery_2",
+                    "cost": 60,
+                    "capacity": 3500
+                },
+                "..."
+            ],
+            "camera_modules": [
+                {
+                    "id": "camera_1",
+                    "cost": 70,
+                    "resolution": 12
+                },
+                {
+                    "id": "camera_2",
+                    "cost": 90,
+                    "resolution": 16
+                },
+                "..."
+            ],
+            "processor_choices": [
+                {
+                    "id": "processor_1",
+                    "cost": 100,
+                    "speed": 2.0
+                },
+                {
+                    "id": "processor_2",
+                    "cost": 120,
+                    "speed": 2.4
+                },
+                "..."
+            ]
+        }
+    },
+    {
+        "user_query": "I need to design a smartphone with the best battery life and performance within a budget of $500. I have 30 different processor options, 20 battery options, 15 screen types, and 25 camera modules. The design should also be as lightweight as possible.",
+        "data_snippet": {
+            "processors": {
+                "processor_1": {
+                    "performance_score": 85,
+                    "power_consumption": 5,
+                    "cost": 120
+                },
+                "processor_2": {
+                    "performance_score": 90,
+                    "power_consumption": 6,
+                    "cost": 150
+                },
+                "...": "..."
+            },
+            "batteries": {
+                "battery_1": {
+                    "capacity": 4000,
+                    "weight": 30,
+                    "cost": 40
+                },
+                "battery_2": {
+                    "capacity": 4500,
+                    "weight": 35,
+                    "cost": 50
+                },
+                "...": "..."
+            },
+            "screens": {
+                "screen_1": {
+                    "size": 6.1,
+                    "resolution": "1080x2400",
+                    "weight": 50,
+                    "cost": 60
+                },
+                "screen_2": {
+                    "size": 6.5,
+                    "resolution": "1440x3200",
+                    "weight": 55,
+                    "cost": 80
+                },
+                "...": "..."
+            },
+            "cameras": {
+                "camera_1": {
+                    "megapixels": 12,
+                    "features": "OIS",
+                    "weight": 10,
+                    "cost": 30
+                },
+                "camera_2": {
+                    "megapixels": 48,
+                    "features": "OIS, EIS",
+                    "weight": 15,
+                    "cost": 45
+                },
+                "...": "..."
+            }
+        }
+    },
+    {
+        "user_query": "I need to design a smartphone that balances cost, battery life, and camera quality. The budget is $500 per unit, and I want the battery to last at least 24 hours on average use. I have 30 different processor options, 20 screen types, 15 battery models, and 25 camera modules to choose from.",
+        "data_snippet": {
+            "processors": [
+                {
+                    "processor_id": "proc_1",
+                    "cost": 100,
+                    "power_consumption": "low",
+                    "performance": "high"
+                },
+                {
+                    "processor_id": "proc_2",
+                    "cost": 80,
+                    "power_consumption": "medium",
+                    "performance": "medium"
+                }
+            ],
+            "screens": [
+                {
+                    "screen_id": "screen_1",
+                    "cost": 50,
+                    "type": "AMOLED",
+                    "power_consumption": "high"
+                },
+                {
+                    "screen_id": "screen_2",
+                    "cost": 40,
+                    "type": "LCD",
+                    "power_consumption": "medium"
+                }
+            ],
+            "batteries": [
+                {
+                    "battery_id": "batt_1",
+                    "cost": 60,
+                    "capacity": "4000mAh",
+                    "life_estimate": "30 hours"
+                },
+                {
+                    "battery_id": "batt_2",
+                    "cost": 45,
+                    "capacity": "3000mAh",
+                    "life_estimate": "20 hours"
+                }
+            ],
+            "cameras": [
+                {
+                    "camera_id": "cam_1",
+                    "cost": 70,
+                    "resolution": "48MP",
+                    "quality": "excellent"
+                },
+                {
+                    "camera_id": "cam_2",
+                    "cost": 50,
+                    "resolution": "24MP",
+                    "quality": "good"
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to design a smartphone that balances performance, battery life, and cost. The budget is $500 per unit, and I want to maximize battery life and performance within this budget. I have 30 different processor options, 20 battery options, and 15 screen options. The data includes processor speed, battery capacity, screen resolution, and cost for each component.",
+        "data_snippet": "| processor | speed (GHz) | cost ($) | ...\n| --------- | ----------- | -------- | ...\n| proc_1    | 2.0         | 50       | ...\n| proc_2    | 2.5         | 75       | ...\n| ...       | ...         | ...      | ...\n| battery   | capacity (mAh) | cost ($) | ...\n| --------- | -------------- | -------- | ...\n| batt_1    | 3000           | 30       | ...\n| batt_2    | 4000           | 45       | ...\n| ...       | ...             | ...      | ...\n| screen    | resolution | cost ($) | ...\n| --------- | ---------- | -------- | ...\n| screen_1  | HD         | 60       | ...\n| screen_2  | Full HD    | 80       | ...\n| ...       | ...         | ...      | ..."
+    },
+    {
+        "user_query": "I need to optimize the staffing for a software development project with a budget of $500,000 and a deadline of 6 months. I have 30 developers, 10 designers, and 5 project managers available. Each has different skills, experience levels, and salary expectations. The goal is to maximize project quality while minimizing cost and time.",
+        "data_snippet": {
+            "developers": [
+                {
+                    "id": "dev_1",
+                    "skills": [
+                        "frontend",
+                        "backend"
+                    ],
+                    "experience_years": 5,
+                    "salary_expectation": 80000
+                },
+                {
+                    "id": "dev_2",
+                    "skills": [
+                        "backend",
+                        "devops"
+                    ],
+                    "experience_years": 3,
+                    "salary_expectation": 70000
+                }
+            ],
+            "designers": [
+                {
+                    "id": "des_1",
+                    "skills": [
+                        "UI",
+                        "UX"
+                    ],
+                    "experience_years": 4,
+                    "salary_expectation": 60000
+                }
+            ],
+            "project_managers": [
+                {
+                    "id": "pm_1",
+                    "skills": [
+                        "agile",
+                        "scrum"
+                    ],
+                    "experience_years": 7,
+                    "salary_expectation": 90000
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to allocate 50 employees to 10 different projects. Each project has different requirements in terms of skills, experience, and time commitment. The goal is to maximize project success rates while minimizing overtime and ensuring employee satisfaction. The data includes employee skills, experience levels, availability, and project requirements.",
+        "data_snippet": {
+            "employees": [
+                {
+                    "employee_id": "E001",
+                    "skills": [
+                        "Python",
+                        "Data Analysis",
+                        "Machine Learning"
+                    ],
+                    "experience_level": "Senior",
+                    "availability_hours_per_week": 40,
+                    "preferred_project_types": [
+                        "AI",
+                        "Data Science"
+                    ]
+                },
+                {
+                    "employee_id": "E002",
+                    "skills": [
+                        "Java",
+                        "Web Development",
+                        "Database Management"
+                    ],
+                    "experience_level": "Mid",
+                    "availability_hours_per_week": 35,
+                    "preferred_project_types": [
+                        "Web Development",
+                        "Enterprise Solutions"
+                    ]
+                }
+            ],
+            "projects": [
+                {
+                    "project_id": "P001",
+                    "required_skills": [
+                        "Python",
+                        "Machine Learning"
+                    ],
+                    "minimum_experience_level": "Senior",
+                    "total_hours_required": 400,
+                    "deadline": "2023-12-31",
+                    "success_criteria": [
+                        "Accuracy > 90%",
+                        "Delivery on time"
+                    ]
+                },
+                {
+                    "project_id": "P002",
+                    "required_skills": [
+                        "Java",
+                        "Web Development"
+                    ],
+                    "minimum_experience_level": "Mid",
+                    "total_hours_required": 300,
+                    "deadline": "2023-11-30",
+                    "success_criteria": [
+                        "User satisfaction > 80%",
+                        "No critical bugs"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize the staffing for a software development project with a budget of $500,000 and a deadline in 6 months. I have 30 potential developers, 15 project managers, and 10 QA testers to choose from. The objectives are to minimize cost, maximize skill match, and ensure project completion on time. The data includes each candidate's skills, experience, salary expectations, and availability.",
+        "data_snippet": {
+            "developers": [
+                {
+                    "id": "dev_1",
+                    "skills": [
+                        "Java",
+                        "Python",
+                        "SQL"
+                    ],
+                    "experience_years": 5,
+                    "salary_expectation": 80000,
+                    "availability": "full-time"
+                },
+                {
+                    "id": "dev_2",
+                    "skills": [
+                        "JavaScript",
+                        "React",
+                        "Node.js"
+                    ],
+                    "experience_years": 3,
+                    "salary_expectation": 70000,
+                    "availability": "full-time"
+                }
+            ],
+            "project_managers": [
+                {
+                    "id": "pm_1",
+                    "skills": [
+                        "Agile",
+                        "Scrum",
+                        "Leadership"
+                    ],
+                    "experience_years": 7,
+                    "salary_expectation": 90000,
+                    "availability": "full-time"
+                }
+            ],
+            "qa_testers": [
+                {
+                    "id": "qa_1",
+                    "skills": [
+                        "Automation",
+                        "Manual Testing",
+                        "Selenium"
+                    ],
+                    "experience_years": 4,
+                    "salary_expectation": 60000,
+                    "availability": "part-time"
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize the staffing for a software development project with a budget of $500,000 and a deadline of 6 months. I have 30 developers, 15 designers, and 10 project managers available. Each has different skills, experience levels, and salary expectations. The goal is to maximize project quality while minimizing costs and meeting the deadline.",
+        "data_snippet": {
+            "developers": [
+                {
+                    "id": "dev_1",
+                    "skills": [
+                        "frontend",
+                        "backend"
+                    ],
+                    "experience": 5,
+                    "salary": 80000
+                },
+                {
+                    "id": "dev_2",
+                    "skills": [
+                        "backend",
+                        "devops"
+                    ],
+                    "experience": 3,
+                    "salary": 60000
+                }
+            ],
+            "designers": [
+                {
+                    "id": "des_1",
+                    "skills": [
+                        "UI",
+                        "UX"
+                    ],
+                    "experience": 4,
+                    "salary": 70000
+                },
+                {
+                    "id": "des_2",
+                    "skills": [
+                        "graphic design"
+                    ],
+                    "experience": 2,
+                    "salary": 50000
+                }
+            ],
+            "project_managers": [
+                {
+                    "id": "pm_1",
+                    "skills": [
+                        "agile",
+                        "scrum"
+                    ],
+                    "experience": 10,
+                    "salary": 100000
+                },
+                {
+                    "id": "pm_2",
+                    "skills": [
+                        "waterfall"
+                    ],
+                    "experience": 8,
+                    "salary": 90000
+                }
+            ]
+        }
+    },
+    {
+        "user_query": "I need to optimize the staffing for a software development project with a budget of $500,000 and a deadline in 6 months. I have 30 potential developers, 15 project managers, and 10 QA testers to choose from. The goal is to maximize project quality while minimizing cost and time.",
+        "data_snippet": {
+            "developers": [
+                {
+                    "id": "dev_1",
+                    "hourly_rate": 50,
+                    "experience_level": "Senior",
+                    "skills": [
+                        "Java",
+                        "Python",
+                        "SQL"
+                    ],
+                    "availability": "Full-time"
+                },
+                {
+                    "id": "dev_2",
+                    "hourly_rate": 35,
+                    "experience_level": "Mid",
+                    "skills": [
+                        "JavaScript",
+                        "HTML",
+                        "CSS"
+                    ],
+                    "availability": "Part-time"
+                }
+            ],
+            "project_managers": [
+                {
+                    "id": "pm_1",
+                    "hourly_rate": 60,
+                    "experience_level": "Senior",
+                    "projects_managed": 10,
+                    "availability": "Full-time"
+                },
+                {
+                    "id": "pm_2",
+                    "hourly_rate": 45,
+                    "experience_level": "Mid",
+                    "projects_managed": 5,
+                    "availability": "Full-time"
+                }
+            ],
+            "qa_testers": [
+                {
+                    "id": "qa_1",
+                    "hourly_rate": 40,
+                    "experience_level": "Senior",
+                    "testing_skills": [
+                        "Automation",
+                        "Manual"
+                    ],
+                    "availability": "Full-time"
+                },
+                {
+                    "id": "qa_2",
+                    "hourly_rate": 30,
+                    "experience_level": "Junior",
+                    "testing_skills": [
+                        "Manual"
+                    ],
+                    "availability": "Part-time"
+                }
+            ]
+        }
+    }
+]
