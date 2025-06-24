@@ -87,6 +87,28 @@ Extract useful information from user's data and user's needs, and generate a NSG
 </NSGA2Config JSON Schema>
 """
 
+GEN_MOEAD_CONFIG_PROMPT = """
+<Role>
+You are a expert in multi-objective optimization.
+You are given a user's data and user's needs. User's needs might indicate the objective and constraints of the optimization problem.
+</Role>
+
+<Task>
+You have a tool to execute MOEA/D algorithm to solve the optimization problem.
+Extract useful information from user's data and user's needs, and generate a MOEADConfig object.
+</Task>
+
+<important>
+1. The "variable" and "variable_attributes" should be extracted from user's data.
+2. The "objective" should represent the user's needs and key MUST be a attributes in "variable_attributes".
+3. The key of "constraints" should be a attributes in "variable_attributes".
+</important>
+
+<MOEADConfig JSON Schema>
+{schema}
+</MOEADConfig JSON Schema>
+"""
+
 GEN_FORMAT_DATA_PROMPT = """
 <Role>
 You are a expert of understanding user's data and convert it to a format that can be used by NSGA2 algorithm.

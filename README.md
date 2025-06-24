@@ -27,7 +27,7 @@ ALOGIRITHM:
 - [x] `MOEA/D`: None support for constrainted moo problems
 
 ## Test Result
-###Test Data:
+### Test Data:
 ```json
 {
     "user_query": "I need to optimize my supply chain for cost, delivery time, and carbon footprint. I have 5 potential suppliers, 3 transportation modes, and 4 warehouse locations. The goal is to minimize cost and delivery time while also reducing the carbon footprint as much as possible.",
@@ -162,4 +162,4 @@ total_carbon_footprint_kg: 170.0
 
 ...
 ```
-![NSGA2 Optimization Results](assets/img/opt_scatter.png)
+![NSGA2 Optimization Results](assets/img/nsga2.png)

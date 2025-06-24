@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List, Dict, Any, Optional, Literal
 
 import logging
+
 logger = logging.getLogger("text2nsga2")
 
 
@@ -63,10 +64,14 @@ class NSGA2Problem(Problem):
             for idx, objective in enumerate(self.objective_mapping.items()):
                 obj_attr, obj_type = objective
                 if obj_type == "sum_min":
-                    value = sum([item[obj_attr] for item in combination if obj_attr in item])
+                    value = sum(
+                        [item[obj_attr] for item in combination if obj_attr in item]
+                    )
                     f[idx].append(value)
                 elif obj_type == "sum_max":
-                    value = -sum([item[obj_attr] for item in combination if obj_attr in item])
+                    value = -sum(
+                        [item[obj_attr] for item in combination if obj_attr in item]
+                    )
                     f[idx].append(value)
 
             # g: constraint function
@@ -76,7 +81,8 @@ class NSGA2Problem(Problem):
                     if constraint_config["type"] == ">=":
                         if any(
                             item[constraint_attr] < constraint_config["value"]
-                            for item in combination if constraint_attr in item
+                            for item in combination
+                            if constraint_attr in item
                         ):
                             g[idx].append(self.constraint_penalty)
                         else:
@@ -84,7 +90,8 @@ class NSGA2Problem(Problem):
                     if constraint_config["type"] == "<=":
                         if any(
                             item[constraint_attr] > constraint_config["value"]
-                            for item in combination if constraint_attr in item
+                            for item in combination
+                            if constraint_attr in item
                         ):
                             g[idx].append(self.constraint_penalty)
                         else:
@@ -94,3 +101,63 @@ class NSGA2Problem(Problem):
             out["G"] = np.column_stack(g)
         else:
             out["F"] = np.column_stack(f)
+
+
+if __name__ == "__main__":
+    print(NSGA2Config.model_json_schema())
+    schema = {
+        "properties": {
+            "data": {
+                "additionalProperties": {"items": {}, "type": "array"},
+                "title": "Data",
+                "type": "object",
+            },
+            "variable": {
+                "items": {"type": "string"},
+                "title": "Variable",
+                "type": "array",
+            },
+            "variable_attributes": {
+                "items": {"type": "string"},
+                "title": "Variable Attributes",
+                "type": "array",
+            },
+            "objective": {
+                "additionalProperties": {
+                    "enum": ["sum_min", "sum_max"],
+                    "type": "string",
+                },
+                "title": "Objective",
+                "type": "object",
+            },
+            "constraints": {
+                "anyOf": [
+                    {
+                        "additionalProperties": {
+                            "additionalProperties": True,
+                            "type": "object",
+                        },
+                        "type": "object",
+                    },
+                    {"type": "null"},
+                ],
+                "default": None,
+                "title": "Constraints",
+            },
+            "constraint_penalty": {
+                "anyOf": [{"type": "number"}, {"type": "null"}],
+                "default": 1000000,
+                "title": "Constraint Penalty",
+            },
+            "pop_size": {"default": 100, "title": "Pop Size", "type": "integer"},
+            "n_gen": {"default": 50, "title": "N Gen", "type": "integer"},
+            "seed": {
+                "anyOf": [{"type": "integer"}, {"type": "null"}],
+                "default": 42,
+                "title": "Seed",
+            },
+        },
+        "required": ["data", "variable", "variable_attributes", "objective"],
+        "title": "NSGA2Config",
+        "type": "object",
+    }

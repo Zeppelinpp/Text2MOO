@@ -25,6 +25,19 @@ class MOEADConfig(BaseModel):
     seed: Optional[int] = 42
 
 
+class MOEADConfigforLLM(BaseModel):
+    variable: List[str]
+    variable_attributes: List[str]
+    objective: Dict[str, Literal["sum_min", "sum_max"]]
+    constraints: Optional[Dict[str, Dict[str, Any]]] = None
+    constraint_penalty: Optional[float] = 1000000
+    n_partitions: Optional[int] = 12
+    prob_neighbor_mating: Optional[float] = 0.7
+    n_neighbors: Optional[int] = 10
+    n_gen: Optional[int] = 50
+    seed: Optional[int] = 42
+
+
 class MOEADProblem(Problem):
     def __init__(self, config: MOEADConfig):
         n_var = len(config.variable)
