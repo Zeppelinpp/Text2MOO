@@ -22,6 +22,10 @@ The system currently supports:
 - Running NSGA-II optimization with customizable parameters
 - Handling multiple objectives and constraints
 
+ALOGIRITHM:
+- [x] `NSGA2`: Great for 2-3 objectives (Support Constraints)
+- [x] `MOEA/D`: None support for constrainted moo problems
+
 ## Test Result
 ###Test Data:
 ```json
