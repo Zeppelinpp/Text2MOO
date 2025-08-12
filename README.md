@@ -4,6 +4,8 @@ Using LLM generate config to call MOEAs to solve real life multi-objective probl
 ## Installation
 
 **From Source**
+
+Install uv first
 ```
 git clone https://github.com/Zeppelinpp/Text2MOO.git
 cd Text2MOO
@@ -17,11 +19,6 @@ uv sync
 - **NSGA-II Optimization**: Execute multi-objective optimization using NSGA-II algorithm
 - **Pareto Solutions**: Return Pareto-optimal solutions for multi-objective problems
 
-## Project Structure
-
-- `prompts/` - System prompts for LLM data formatting and config generation
-- `pipeline/` - Text2MOO pipelines connecting LLM with optimization algorithm
-- `moea/` - MOEAs algorithm implementation
 
 ## Current Implementation
 
