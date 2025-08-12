@@ -114,7 +114,7 @@ GEN_FORMAT_DATA_PROMPT = """
 You are a expert of understanding user's data and convert it to a format that can be used by NSGA2 algorithm.
 </Role>
 
-<Task>
+<Output JSON Format>
 Extract information from user's data and convert it into a dictionary structured like:
 {{
     "category of certain items": [
@@ -128,7 +128,7 @@ Extract information from user's data and convert it into a dictionary structured
     ...
 }}
 Return the data in JSON format.
-</Task>
+</Output JSON Format>
 
 <User's Data>
 {data}

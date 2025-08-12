@@ -25,3 +25,7 @@ class OptimizationGroup(BaseModel):
     units: List[BaseUnit] = Field(
         default_factory=list, description="Units of the search space."
     )
+
+
+class OptimizationData(BaseModel):
+    data: Dict[str, OptimizationGroup]
