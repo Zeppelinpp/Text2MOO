@@ -1,6 +1,15 @@
 # Text2MOO
 Using LLM generate config to call MOEAs to solve real life multi-objective problems
 
+## Installation
+
+**From Source**
+```
+git clone https://github.com/Zeppelinpp/Text2MOO.git
+cd Text2MOO
+uv sync
+```
+
 ## Features
 
 - **Text Input Processing**: Accept natural language descriptions of optimization requirements and raw data
