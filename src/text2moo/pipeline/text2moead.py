@@ -5,20 +5,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import json
 from openai import OpenAI
 from typing import Optional, Any
-from pymoo.algorithms.moo.nsga2 import NSGA2
+from pymoo.algorithms.moo.moead import MOEAD
 from pymoo.optimize import minimize
 from pymoo.operators.sampling.rnd import IntegerRandomSampling
 from pymoo.operators.crossover.sbx import SBX
 from pymoo.operators.mutation.pm import PM
 from pymoo.operators.repair.rounding import RoundingRepair
+from pymoo.util.ref_dirs import get_reference_directions
 from pymoo.visualization.scatter import Scatter
-from moea.nsga2 import NSGA2Config, NSGA2Problem
+from text2moo.moea.moead import MOEADConfig, MOEADConfigforLLM, MOEADProblem
 import matplotlib.pyplot as plt
-from prompts.sys_prompts import GEN_NSGA2_CONFIG_PROMPT, GEN_FORMAT_DATA_PROMPT
+from text2moo.prompts.sys_prompts import GEN_MOEAD_CONFIG_PROMPT, GEN_FORMAT_DATA_PROMPT
 
 import logging
 
-logger = logging.getLogger("text2nsga2")
+logger = logging.getLogger("text2moead")
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler = logging.StreamHandler(sys.stdout)
@@ -26,7 +27,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-class Text2NSGA2:
+class Text2MOEAD:
     def __init__(
         self,
         api_key: Optional[str] = None,
@@ -47,52 +48,63 @@ class Text2NSGA2:
         except Exception as e:
             print(e)
             return "Please provide data snippet for info extraction."
-        # Generate NSGA2Config
-        logger.info(f"Generating NSGA2Config...")
+        # Generate MOEADConfig
+        logger.info(f"Generating MOEADConfig...")
         config = self._gen_config(data, user_prompt)
         config = json.loads(config)
 
-        # Setup NSGA2Problem
-        nsga2_config = NSGA2Config(data=data, **config)
-        objective = json.dumps(nsga2_config.objective, indent=4)
-        constraints = json.dumps(nsga2_config.constraints, indent=4)
+        # Setup MOEADProblem
+        moead_config = MOEADConfig(data=data, **config)
+        objective = json.dumps(moead_config.objective, indent=4)
+        constraints = json.dumps(moead_config.constraints, indent=4)
         logger.info(f"Objective:\n{objective}")
         logger.info(f"Constraints:\n{constraints}")
 
-        logger.info(f"Setting up NSGA2Problem...")
-        problem = NSGA2Problem(nsga2_config)
-        algorithm = NSGA2(
-            pop_size=nsga2_config.pop_size,
+        logger.info(f"Setting up MOEADProblem...")
+        problem = MOEADProblem(moead_config)
+        algorithm = MOEAD(
+            ref_dirs=get_reference_directions("das-dennis", problem.n_obj, n_partitions=moead_config.n_partitions),
+            n_neighbors=moead_config.n_neighbors,
+            prob_neighbor_mating=moead_config.prob_neighbor_mating,
             sampling=IntegerRandomSampling(),
             crossover=SBX(prob=1.0, eta=3.0, vtype=float, repair=RoundingRepair()),
             mutation=PM(prob=1.0, eta=3.0, vtype=float, repair=RoundingRepair()),
-            eliminate_duplicates=True,
         )
         logger.info(
-            f"Initialize NSGA2 algorithm with pop_size={nsga2_config.pop_size}, n_gen={nsga2_config.n_gen}, constraint_penalty={nsga2_config.constraint_penalty}"
+            f"Initialize MOEAD algorithm with n_gen={moead_config.n_gen}"
         )
 
-        # Run NSGA2
-        logger.info(f"Running NSGA2...")
+        # Run MOEAD
+        logger.info(f"Running MOEAD...")
         res = minimize(
             problem,
             algorithm,
-            ("n_gen", nsga2_config.n_gen),
-            seed=nsga2_config.seed,
+            ("n_gen", moead_config.n_gen),
+            seed=moead_config.seed,
             verbose=True,
         )
 
         # Return Pareto-Front solutions
         logger.info(f"Generate report...")
         report = []
+        seen = set()
         for i, x in enumerate(res.X):
-            report.append(f"Solution {i+1}:")
+            selection_tuple = tuple(int(idx) for idx in x)
+            obj_values = tuple(
+                res.F[i][obj_id] if moead_config.objective[obj_name] == "sum_min" else -res.F[i][obj_id]
+                for obj_id, (obj_name, obj_type) in enumerate(moead_config.objective.items())
+            )
+            dedup_key = (selection_tuple, obj_values)
+            if dedup_key in seen:
+                continue
+            seen.add(dedup_key)
+            report.append(f"Solution {len(seen)}:")
             for idx, index in enumerate(x):
-                var_name = nsga2_config.variable[idx]
-                selected_item = data[var_name][index]
+                var_name = moead_config.variable[idx]
+                selected_item = moead_config.data[var_name][index]
                 report.append(f"{var_name}: {selected_item['name']}")
             obj_id = 0
-            for obj_name, obj_type in nsga2_config.objective.items():
+            for obj_name, obj_type in moead_config.objective.items():
                 if obj_type == "sum_min":
                     report.append(f"total_{obj_name}: {res.F[i][obj_id]}")
                 else:
@@ -100,7 +112,6 @@ class Text2NSGA2:
                 obj_id += 1
             report.append("\n")
         report = "\n".join(report)
-
         return res, report
 
     def _format_data(self, data: str):
@@ -120,19 +131,19 @@ class Text2NSGA2:
         return response.choices[0].message.content
 
     def _gen_config(self, data: dict, user_prompt: str):
-        """Generate NSGA2Config from user's prompt and formatted data."""
+        """Generate MOEADConfig from user's prompt and formatted data."""
         data_snippet = []
         for key, value in data.items():
             value = value[0]
             data_snippet.append(f"{key}: {value}")
         data_snippet = "\n".join(data_snippet)
-        logger.info(f"Generating NSGA2Config using {self.model}...")
+        logger.info(f"Generating MOEADConfig using {self.model}...")
         response = self.client.chat.completions.create(
             model="qwen-plus",
             messages=[
                 {
                     "role": "system",
-                    "content": GEN_NSGA2_CONFIG_PROMPT,
+                    "content": GEN_MOEAD_CONFIG_PROMPT.format(schema=MOEADConfigforLLM.model_json_schema()),
                 },
                 {
                     "role": "user",
@@ -155,7 +166,7 @@ if __name__ == "__main__":
         data_set = json.load(f)
 
     user_prompt, user_data = data_set[0]["user_query"], str(data_set[0]["data_snippet"])
-    optimizer = Text2NSGA2(
+    optimizer = Text2MOEAD(
         api_key=os.getenv("QWEN_KEY"),
         base_url=os.getenv("QWEN_BASE_URL"),
         model="qwen-plus",
