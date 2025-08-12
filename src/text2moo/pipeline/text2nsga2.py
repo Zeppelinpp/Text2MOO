@@ -1,10 +1,11 @@
-import os, sys
+import os
+import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 from openai import OpenAI
-from typing import Optional, Any
+from typing import Optional
 from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.optimize import minimize
 from pymoo.operators.sampling.rnd import IntegerRandomSampling
@@ -13,7 +14,6 @@ from pymoo.operators.mutation.pm import PM
 from pymoo.operators.repair.rounding import RoundingRepair
 from pymoo.visualization.scatter import Scatter
 from text2moo.moea.nsga2 import NSGA2Config, NSGA2Problem
-import matplotlib.pyplot as plt
 from text2moo.prompts.sys_prompts import GEN_NSGA2_CONFIG_PROMPT, GEN_FORMAT_DATA_PROMPT
 
 import logging
@@ -41,14 +41,14 @@ class Text2NSGA2:
 
     def run(self, user_prompt: str, user_data: str):
         try:
-            logger.info(f"Formatting data...")
+            logger.info("Formatting data...")
             data = self._format_data(user_data)
             data = json.loads(data)
         except Exception as e:
             print(e)
             return "Please provide data snippet for info extraction."
         # Generate NSGA2Config
-        logger.info(f"Generating NSGA2Config...")
+        logger.info("Generating NSGA2Config...")
         config = self._gen_config(data, user_prompt)
         config = json.loads(config)
 
@@ -59,7 +59,7 @@ class Text2NSGA2:
         logger.info(f"Objective:\n{objective}")
         logger.info(f"Constraints:\n{constraints}")
 
-        logger.info(f"Setting up NSGA2Problem...")
+        logger.info("Setting up NSGA2Problem...")
         problem = NSGA2Problem(nsga2_config)
         algorithm = NSGA2(
             pop_size=nsga2_config.pop_size,
@@ -73,7 +73,7 @@ class Text2NSGA2:
         )
 
         # Run NSGA2
-        logger.info(f"Running NSGA2...")
+        logger.info("Running NSGA2...")
         res = minimize(
             problem,
             algorithm,
@@ -83,10 +83,10 @@ class Text2NSGA2:
         )
 
         # Return Pareto-Front solutions
-        logger.info(f"Generate report...")
+        logger.info("Generate report...")
         report = []
         for i, x in enumerate(res.X):
-            report.append(f"Solution {i+1}:")
+            report.append("Solution {i+1}:")
             for idx, index in enumerate(x):
                 var_name = nsga2_config.variable[idx]
                 selected_item = data[var_name][index]

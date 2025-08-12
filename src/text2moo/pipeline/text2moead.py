@@ -1,10 +1,11 @@
-import os, sys
+import os
+import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 from openai import OpenAI
-from typing import Optional, Any
+from typing import Optional
 from pymoo.algorithms.moo.moead import MOEAD
 from pymoo.optimize import minimize
 from pymoo.operators.sampling.rnd import IntegerRandomSampling
@@ -14,7 +15,6 @@ from pymoo.operators.repair.rounding import RoundingRepair
 from pymoo.util.ref_dirs import get_reference_directions
 from pymoo.visualization.scatter import Scatter
 from text2moo.moea.moead import MOEADConfig, MOEADConfigforLLM, MOEADProblem
-import matplotlib.pyplot as plt
 from text2moo.prompts.sys_prompts import GEN_MOEAD_CONFIG_PROMPT, GEN_FORMAT_DATA_PROMPT
 
 import logging
@@ -42,14 +42,14 @@ class Text2MOEAD:
 
     def run(self, user_prompt: str, user_data: str):
         try:
-            logger.info(f"Formatting data...")
+            logger.info("Formatting data...")
             data = self._format_data(user_data)
             data = json.loads(data)
         except Exception as e:
             print(e)
             return "Please provide data snippet for info extraction."
         # Generate MOEADConfig
-        logger.info(f"Generating MOEADConfig...")
+        logger.info("Generating MOEADConfig...")
         config = self._gen_config(data, user_prompt)
         config = json.loads(config)
 
@@ -60,7 +60,7 @@ class Text2MOEAD:
         logger.info(f"Objective:\n{objective}")
         logger.info(f"Constraints:\n{constraints}")
 
-        logger.info(f"Setting up MOEADProblem...")
+        logger.info("Setting up MOEADProblem...")
         problem = MOEADProblem(moead_config)
         algorithm = MOEAD(
             ref_dirs=get_reference_directions("das-dennis", problem.n_obj, n_partitions=moead_config.n_partitions),
@@ -75,7 +75,7 @@ class Text2MOEAD:
         )
 
         # Run MOEAD
-        logger.info(f"Running MOEAD...")
+        logger.info("Running MOEAD...")
         res = minimize(
             problem,
             algorithm,
@@ -85,7 +85,7 @@ class Text2MOEAD:
         )
 
         # Return Pareto-Front solutions
-        logger.info(f"Generate report...")
+        logger.info("Generate report...")
         report = []
         seen = set()
         for i, x in enumerate(res.X):
